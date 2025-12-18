@@ -1,0 +1,15 @@
+# ===== Backend =====
+/target
+/.mvn/wrapper/maven-wrapper.jar
+*.log
+
+# ===== Frontend =====
+/frontend/node_modules
+/frontend/dist
+
+# ===== IDE =====
+.idea
+.vscode
+
+# ===== Env =====
+.env
