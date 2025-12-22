@@ -1,38 +1,47 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { login as loginApi } from '../services/api.js';
-import { useAuth } from '../context/AuthContext.jsx';
-import ErrorMessage from '../components/ErrorMessage.jsx';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { login as loginApi } from "../services/api.js";
+import { useAuth } from "../context/AuthContext.jsx";
+import ErrorMessage from "../components/ErrorMessage.jsx";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
 
-  const [email, setEmail] = useState('admin@test.com');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState("admin@test.com");
+  const [password, setPassword] = useState("password123");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
       const data = await loginApi(email, password);
       // Save token and email in AuthContext
       login(data.token, data.email);
-      navigate('/projects');
+      navigate("/dashboard");
     } catch (err) {
       console.error(err);
       if (err.response) {
         if (err.response.status === 401) {
-          setError('Invalid email or password');
+          setError("Invalid email or password");
         } else {
-          setError('Login failed. Server returned an error.');
+          setError("Login failed. Server returned an error.");
         }
       } else {
-        setError('Unable to reach server. Make sure the backend on http://localhost:8081 is running.');
+        setError(
+          "Unable to reach server. Make sure the backend on http://localhost:8081 is running.",
+        );
       }
     } finally {
       setLoading(false);
@@ -69,7 +78,7 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-60"
           >
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? "Logging in..." : "Login"}
           </button>
           <ErrorMessage message={error} />
         </form>

@@ -1,15 +1,23 @@
-# ===== Backend =====
-/target
-/.mvn/wrapper/maven-wrapper.jar
+# Java / Spring
+/target/
 *.log
 
-# ===== Frontend =====
-/frontend/node_modules
-/frontend/dist
+# Maven
+.mvn/wrapper/maven-wrapper.jar
 
-# ===== IDE =====
-.idea
-.vscode
+# Node / React
+task-manager-frontend/node_modules/
+task-manager-frontend/dist/
 
-# ===== Env =====
+# Env / secrets
 .env
+*.env
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db

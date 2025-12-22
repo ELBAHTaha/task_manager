@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
+import LoadingSpinner from "./LoadingSpinner.jsx";
 
-export default function Loader() {
+export default function Loader({ text = "", size = "md", className = "py-8" }) {
   return (
-    <div className="flex justify-center items-center py-8">
-      <div className="h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+    <div className={`flex justify-center items-center ${className}`}>
+      <LoadingSpinner size={size} text={text} />
     </div>
   );
 }
-
-
