@@ -1,0 +1,114 @@
+-------------------------------------------------------------------------------
+Test set: com.taskmanager.service.TaskServiceTest
+-------------------------------------------------------------------------------
+Tests run: 21, Failures: 2, Errors: 10, Skipped: 0, Time elapsed: 0.836 s <<< FAILURE! -- in com.taskmanager.service.TaskServiceTest
+com.taskmanager.service.TaskServiceTest.createTask_WithNullDueDate_ShouldStillCreate -- Time elapsed: 0.012 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.toEntity(com.taskmanager.dto.TaskRequest, com.taskmanager.model.Project)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.createTask(TaskService.java:33)
+	at com.taskmanager.service.TaskServiceTest.createTask_WithNullDueDate_ShouldStillCreate(TaskServiceTest.java:135)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.createTask_WhenRepositoryThrowsException_ShouldPropagateException -- Time elapsed: 0.014 s <<< FAILURE!
+Wanted but not invoked:
+taskRepository.save(
+    <any com.taskmanager.model.Task>
+);
+-> at com.taskmanager.service.TaskServiceTest.createTask_WhenRepositoryThrowsException_ShouldPropagateException(TaskServiceTest.java:369)
+Actually, there were zero interactions with this mock.
+
+	at com.taskmanager.service.TaskServiceTest.createTask_WhenRepositoryThrowsException_ShouldPropagateException(TaskServiceTest.java:369)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.createTask_WithValidRequest_ShouldCreateAndReturnTask -- Time elapsed: 0.014 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.toEntity(com.taskmanager.dto.TaskRequest, com.taskmanager.model.Project)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.createTask(TaskService.java:33)
+	at com.taskmanager.service.TaskServiceTest.createTask_WithValidRequest_ShouldCreateAndReturnTask(TaskServiceTest.java:82)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.createTask_WithNullTitle_ShouldStillCreate -- Time elapsed: 0.011 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.toEntity(com.taskmanager.dto.TaskRequest, com.taskmanager.model.Project)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.createTask(TaskService.java:33)
+	at com.taskmanager.service.TaskServiceTest.createTask_WithNullTitle_ShouldStillCreate(TaskServiceTest.java:119)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.mapToResponse_ShouldMapAllFields -- Time elapsed: 0.014 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.toResponseList(java.util.List)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.getProjectTasks(TaskService.java:42)
+	at com.taskmanager.service.TaskServiceTest.mapToResponse_ShouldMapAllFields(TaskServiceTest.java:427)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.completeTask_WithAlreadyCompletedTask_ShouldStillUpdate -- Time elapsed: 0.011 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.markCompleted(com.taskmanager.model.Task)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.completeTask(TaskService.java:69)
+	at com.taskmanager.service.TaskServiceTest.completeTask_WithAlreadyCompletedTask_ShouldStillUpdate(TaskServiceTest.java:286)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.getProjectTasks_WithNoTasks_ShouldReturnEmptyList -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.toResponseList(java.util.List)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.getProjectTasks(TaskService.java:42)
+	at com.taskmanager.service.TaskServiceTest.getProjectTasks_WithNoTasks_ShouldReturnEmptyList(TaskServiceTest.java:209)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.getTaskEntity_WithValidTaskAndUser_ShouldReturnTask -- Time elapsed: 0.011 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.markCompleted(com.taskmanager.model.Task)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.completeTask(TaskService.java:69)
+	at com.taskmanager.service.TaskServiceTest.getTaskEntity_WithValidTaskAndUser_ShouldReturnTask(TaskServiceTest.java:411)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.completeTask_WhenRepositoryThrowsExceptionOnSave_ShouldPropagateException -- Time elapsed: 0.010 s <<< FAILURE!
+Wanted but not invoked:
+taskRepository.save(
+    <any com.taskmanager.model.Task>
+);
+-> at com.taskmanager.service.TaskServiceTest.completeTask_WhenRepositoryThrowsExceptionOnSave_ShouldPropagateException(TaskServiceTest.java:399)
+
+However, there was exactly 1 interaction with this mock:
+taskRepository.findById(1L);
+-> at com.taskmanager.service.TaskService.getTaskEntity(TaskService.java:80)
+
+
+	at com.taskmanager.service.TaskServiceTest.completeTask_WhenRepositoryThrowsExceptionOnSave_ShouldPropagateException(TaskServiceTest.java:399)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.completeTask_WithValidTask_ShouldMarkAsCompleted -- Time elapsed: 0.009 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.markCompleted(com.taskmanager.model.Task)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.completeTask(TaskService.java:69)
+	at com.taskmanager.service.TaskServiceTest.completeTask_WithValidTask_ShouldMarkAsCompleted(TaskServiceTest.java:235)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.createTask_WithEmptyDescription_ShouldStillCreate -- Time elapsed: 0.014 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.toEntity(com.taskmanager.dto.TaskRequest, com.taskmanager.model.Project)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.createTask(TaskService.java:33)
+	at com.taskmanager.service.TaskServiceTest.createTask_WithEmptyDescription_ShouldStillCreate(TaskServiceTest.java:151)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.taskmanager.service.TaskServiceTest.getProjectTasks_WithValidProject_ShouldReturnTasks -- Time elapsed: 0.006 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.taskmanager.mapper.TaskMapper.toResponseList(java.util.List)" because "this.taskMapper" is null
+	at com.taskmanager.service.TaskService.getProjectTasks(TaskService.java:42)
+	at com.taskmanager.service.TaskServiceTest.getProjectTasks_WithValidProject_ShouldReturnTasks(TaskServiceTest.java:176)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

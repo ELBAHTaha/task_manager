@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Task Manager - Portfolio-Ready Full-Stack Application
 
 A professional task management application built with React + Vite frontend and Spring Boot backend, featuring JWT authentication and a modern, responsive UI.
@@ -242,3 +243,438 @@ This project demonstrates:
 **Perfect for**: Junior to Mid-level Developer positions, Full-stack roles, Frontend specializations, and portfolio demonstrations.
 
 This project showcases modern web development practices and real-world application development skills.
+=======
+# Task Manager - Full Stack Application
+
+A comprehensive task management system built with Spring Boot, React, and PostgreSQL, featuring JWT authentication, clean architecture, and Docker containerization.
+
+## 🚀 Quick Start
+
+**One-command setup:**
+
+```bash
+docker compose up --build
+```
+
+That's it! The application will be available at:
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:8081
+- **Database**: PostgreSQL on localhost:5432
+
+**Default Login:**
+- Email: `admin@test.com`
+- Password: `password123`
+
+## 📋 Table of Contents
+
+- [Architecture](#architecture)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Development](#development)
+- [API Documentation](#api-documentation)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Environment Variables](#environment-variables)
+- [Troubleshooting](#troubleshooting)
+
+## 🏗️ Architecture
+
+This application follows Clean Architecture principles with a clear separation of concerns:
+
+### Backend Structure
+```
+backend/
+├── src/main/java/com/taskmanager/
+│   ├── config/          # Configuration classes
+│   ├── controller/      # REST Controllers
+│   ├── dto/            # Data Transfer Objects
+│   ├── exception/      # Exception handling
+│   ├── mapper/         # Entity-DTO mappers
+│   ├── model/          # Domain entities
+│   ├── repository/     # Data access layer
+│   ├── security/       # Security configuration
+│   └── service/        # Business logic
+└── resources/
+    ├── application.yml
+    └── application-docker.yml
+```
+
+### Frontend Structure
+```
+frontend/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── hooks/          # Custom React hooks
+│   ├── pages/          # Page components
+│   ├── services/       # API services
+│   └── tests/          # Component tests
+├── public/             # Static assets
+└── dist/               # Build output
+```
+
+## ✨ Features
+
+### Core Features
+- 🔐 **JWT Authentication** - Secure user authentication and authorization
+- 📊 **Project Management** - Create, update, and organize projects
+- ✅ **Task Management** - Full CRUD operations for tasks
+- 📈 **Progress Tracking** - Real-time progress visualization
+- 🎨 **Responsive UI** - Modern, mobile-friendly interface built with Tailwind CSS
+
+### Technical Features
+- 🐳 **Docker Support** - Complete containerization with Docker Compose
+- 🏥 **Health Checks** - Built-in health monitoring for all services
+- 🔄 **Hot Reload** - Development mode with automatic reloading
+- 🛡️ **Security** - CORS configuration, SQL injection protection
+- 📱 **Progressive Web App** - Offline-capable frontend
+- 🧪 **Testing** - Unit and integration tests
+
+## 📋 Prerequisites
+
+- **Docker Desktop** (recommended) OR:
+  - Node.js 20+ and npm 9+
+  - Java 17+
+  - PostgreSQL 15+
+  - Maven 3.9+
+
+## 🛠️ Installation
+
+### Option 1: Docker (Recommended)
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd hahn
+   ```
+
+2. **Set up environment variables:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your preferred settings
+   ```
+
+3. **Start all services:**
+   ```bash
+   docker compose up --build
+   ```
+
+### Option 2: Local Development
+
+1. **Start PostgreSQL database:**
+   ```bash
+   # Using Docker
+   docker run --name taskmanager-db \
+     -e POSTGRES_DB=taskmanager \
+     -e POSTGRES_USER=taskmanager \
+     -e POSTGRES_PASSWORD=password \
+     -p 5432:5432 -d postgres:15-alpine
+   ```
+
+2. **Start the backend:**
+   ```bash
+   cd backend
+   ./mvnw spring-boot:run
+   ```
+
+3. **Start the frontend:**
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+
+## 🔧 Development
+
+### Backend Development
+
+The backend uses Spring Boot 3.2 with the following stack:
+- **Framework**: Spring Boot, Spring Security, Spring Data JPA
+- **Database**: PostgreSQL with Hibernate ORM
+- **Authentication**: JWT with custom security configuration
+- **Testing**: JUnit 5, Mockito, Testcontainers
+
+**Key commands:**
+```bash
+# Run tests
+./mvnw test
+
+# Run with development profile
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+
+# Package application
+./mvnw clean package
+```
+
+### Frontend Development
+
+The frontend uses React 18 with Vite and modern tooling:
+- **Framework**: React with Hooks and Context API
+- **Routing**: React Router v6
+- **Styling**: Tailwind CSS
+- **HTTP Client**: Axios
+- **Testing**: Vitest, React Testing Library
+
+**Key commands:**
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Run tests
+npm test
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📖 API Documentation
+
+### Authentication Endpoints
+
+```http
+POST /auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@test.com",
+  "password": "password123"
+}
+```
+
+### Project Endpoints
+
+```http
+# Get all projects
+GET /projects
+Authorization: Bearer <token>
+
+# Create project
+POST /projects
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "title": "My Project",
+  "description": "Project description"
+}
+
+# Get project progress
+GET /projects/{id}/progress
+Authorization: Bearer <token>
+```
+
+### Task Endpoints
+
+```http
+# Get project tasks
+GET /projects/{projectId}/tasks
+Authorization: Bearer <token>
+
+# Create task
+POST /projects/{projectId}/tasks
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "Task name",
+  "description": "Task description",
+  "completed": false
+}
+
+# Update task
+PUT /tasks/{id}
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "Updated task name",
+  "completed": true
+}
+```
+
+### Health Check
+
+```http
+GET /actuator/health
+```
+
+## 🧪 Testing
+
+### Backend Tests
+
+Run the complete test suite:
+```bash
+cd backend
+./mvnw test
+```
+
+Generate test coverage report:
+```bash
+./mvnw test jacoco:report
+```
+
+### Frontend Tests
+
+Run component tests:
+```bash
+cd frontend
+npm test
+```
+
+Run tests with coverage:
+```bash
+npm run test:coverage
+```
+
+## 🚢 Deployment
+
+### Docker Production Deployment
+
+1. **Build production images:**
+   ```bash
+   docker compose -f docker-compose.yml build
+   ```
+
+2. **Deploy to production:**
+   ```bash
+   # Set production environment variables
+   export DB_PASSWORD=your-secure-password
+   export JWT_SECRET=your-jwt-secret-key
+   
+   docker compose up -d
+   ```
+
+### Manual Deployment
+
+1. **Build backend:**
+   ```bash
+   cd backend
+   ./mvnw clean package -DskipTests
+   ```
+
+2. **Build frontend:**
+   ```bash
+   cd frontend
+   npm install
+   npm run build
+   ```
+
+3. **Deploy artifacts to your server**
+
+## ⚙️ Environment Variables
+
+Key environment variables (see `.env.example` for complete list):
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DB_NAME` | taskmanager | PostgreSQL database name |
+| `DB_USERNAME` | taskmanager | Database username |
+| `DB_PASSWORD` | password | Database password |
+| `JWT_SECRET` | (generated) | JWT signing secret |
+| `BACKEND_PORT` | 8081 | Backend server port |
+| `FRONTEND_PORT` | 5173 | Frontend server port |
+| `VITE_API_BASE_URL` | http://localhost:8081 | Backend API URL for frontend |
+| `CORS_ALLOWED_ORIGINS` | http://localhost:5173 | Allowed CORS origins |
+
+## 🔍 Troubleshooting
+
+### Common Issues
+
+**1. Docker containers fail to start**
+```bash
+# Check logs
+docker compose logs
+
+# Restart services
+docker compose down
+docker compose up --build
+```
+
+**2. Database connection issues**
+```bash
+# Check if database is running
+docker compose ps
+
+# Check database logs
+docker logs taskmanager-db
+```
+
+**3. Frontend can't reach backend**
+- Verify `VITE_API_BASE_URL` in your environment
+- Check CORS configuration in backend
+- Ensure backend health check passes: http://localhost:8081/actuator/health
+
+**4. Authentication issues**
+- Verify JWT secret is properly set
+- Check if user exists in database
+- Try default credentials: admin@test.com / password123
+
+**5. Port conflicts**
+```bash
+# Change ports in .env file or docker-compose.yml
+# Default ports: 5173 (frontend), 8081 (backend), 5432 (database)
+```
+
+### Health Checks
+
+Monitor service health:
+```bash
+# Check all services
+docker compose ps
+
+# Check specific service logs
+docker logs taskmanager-backend
+docker logs taskmanager-frontend
+docker logs taskmanager-db
+
+# Test backend health
+curl http://localhost:8081/actuator/health
+
+# Test frontend
+curl http://localhost:5173/health
+```
+
+### Development Tips
+
+1. **Hot reload not working?**
+   - Ensure proper volume mounting in docker-compose.yml
+   - Check file permissions
+   - Restart the development container
+
+2. **Database schema issues?**
+   - The application uses `hibernate.ddl-auto=update`
+   - For fresh start: `docker compose down -v` then `docker compose up`
+
+3. **CORS issues in development?**
+   - Frontend proxy configuration in vite.config.js
+   - Backend CORS settings in SecurityConfig.java
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📞 Support
+
+If you encounter any issues:
+1. Check the [Troubleshooting](#troubleshooting) section
+2. Review the logs using `docker compose logs`
+3. Open an issue with detailed error information
+
+---
+
+**Status**: ✅ Production Ready | 🐳 Fully Dockerized | 🔒 Secure | 📱 Responsive
+>>>>>>> 9fb47b4 (re orginizing the structure of the project and adding docker deploymen)
