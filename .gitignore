@@ -21,3 +21,9 @@ task-manager-frontend/dist/
 # OS
 .DS_Store
 Thumbs.db
+# Backend build
+/backend/target/
+
+# Frontend build
+/frontend/node_modules/
+/frontend/dist/
