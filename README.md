@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Task Manager - Portfolio-Ready Full-Stack Application
 
 A professional task management application built with React + Vite frontend and Spring Boot backend, featuring JWT authentication and a modern, responsive UI.
@@ -6,7 +6,7 @@ A professional task management application built with React + Vite frontend and 
 ## 🎯 Project Overview
 
 This is a complete task management system designed to showcase modern web development skills. It demonstrates proficiency in both frontend and backend technologies, making it perfect for portfolios, job applications, and real-world use.
-
+Short Demo Video: [(https://www.youtube.com/watch?v=tGYPGvWN0qs)](https://www.youtube.com/watch?v=tGYPGvWN0qs)
 ## ✨ Key Features
 
 ### 🔐 Authentication & Security
@@ -240,7 +240,6 @@ This project demonstrates:
 
 ---
 
-**Perfect for**: Junior to Mid-level Developer positions, Full-stack roles, Frontend specializations, and portfolio demonstrations.
 
 This project showcases modern web development practices and real-world application development skills.
 =======
@@ -655,9 +654,6 @@ curl http://localhost:5173/health
    - Frontend proxy configuration in vite.config.js
    - Backend CORS settings in SecurityConfig.java
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🤝 Contributing
 
@@ -676,5 +672,6 @@ If you encounter any issues:
 
 ---
 
+
 **Status**: ✅ Production Ready | 🐳 Fully Dockerized | 🔒 Secure | 📱 Responsive
->>>>>>> 9fb47b4 (re orginizing the structure of the project and adding docker deploymen)
+
