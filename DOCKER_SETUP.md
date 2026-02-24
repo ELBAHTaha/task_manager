@@ -250,7 +250,7 @@ Services start in this order:
 
 3. **Run frontend locally**:
    ```bash
-   cd task-manager-frontend
+   cd frontend
    npm install
    npm run dev
    ```
@@ -262,8 +262,8 @@ For development with hot reload, use volume mounts:
 ```yaml
 # Add to docker-compose.yml frontend service
 volumes:
-  - ./task-manager-frontend/src:/app/src
-  - ./task-manager-frontend/public:/app/public
+  - ./frontend/src:/app/src
+  - ./frontend/public:/app/public
 ```
 
 ## Production Deployment
